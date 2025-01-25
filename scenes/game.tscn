@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf20sxoltlk68"]
+
+[ext_resource type="PackedScene" uid="uid://dlgsfalpla7ac" path="res://scenes/player.tscn" id="1_e820l"]
+[ext_resource type="Texture2D" uid="uid://dt8bkifure8m" path="res://sprites/TileMap.png" id="1_lc0s4"]
+[ext_resource type="FontFile" uid="uid://dv0l3lnjm7b83" path="res://fonts/TWEENIESDODDLEBINES.ttf" id="3_olg3y"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfm4j"]
+texture = ExtResource("1_lc0s4")
+texture_region_size = Vector2i(32, 32)
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32.5, 31.5, -32, 31.5, 32.5, -32, 31.5)
+
+[sub_resource type="TileSet" id="TileSet_lkp25"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_jfm4j")
+
+[node name="Game" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_lkp25")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 0, 0, 65540, 0, 0, 65544, 0, 0, 65548, 0, 0, 65552, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_e820l")]
+position = Vector2(0, -76)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, 68)
+
+[node name="Label" type="RichTextLabel" parent="."]
+offset_left = 41.0
+offset_top = -166.0
+offset_right = 187.0
+offset_bottom = -138.0
+theme_override_fonts/normal_font = ExtResource("3_olg3y")
+theme_override_font_sizes/bold_italics_font_size = 8
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]IT'S COLD[/shake]"
