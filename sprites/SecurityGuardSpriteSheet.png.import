@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bch5h1dhefv6a"
-path="res://.godot/imported/WolfGirlSpriteSheet.png-ffb9c1a759f53efcbd9d1f135a14b3ec.ctex"
+uid="uid://cpk3eoe5octtb"
+path="res://.godot/imported/SecurityGuardSpriteSheet.png-25326d18c4b2cbdf3cc04e58e1adba64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/WolfGirlSpriteSheet.png"
-dest_files=["res://.godot/imported/WolfGirlSpriteSheet.png-ffb9c1a759f53efcbd9d1f135a14b3ec.ctex"]
+source_file="res://sprites/SecurityGuardSpriteSheet.png"
+dest_files=["res://.godot/imported/SecurityGuardSpriteSheet.png-25326d18c4b2cbdf3cc04e58e1adba64.ctex"]
 
 [params]
 
