@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bf20sxoltlk68"]
+[gd_scene load_steps=9 format=4 uid="uid://bf20sxoltlk68"]
 
 [ext_resource type="PackedScene" uid="uid://dlgsfalpla7ac" path="res://scenes/wolfgirl.tscn" id="1_e820l"]
 [ext_resource type="Texture2D" uid="uid://dt8bkifure8m" path="res://sprites/TileMap.png" id="1_lc0s4"]
 [ext_resource type="Script" path="res://scripts/stamina_bar.gd" id="3_gvex4"]
 [ext_resource type="FontFile" uid="uid://dv0l3lnjm7b83" path="res://fonts/TWEENIESDODDLEBINES.ttf" id="3_olg3y"]
 [ext_resource type="PackedScene" uid="uid://837myc1f7k6" path="res://scenes/guard.tscn" id="5_rbcxq"]
+[ext_resource type="Texture2D" uid="uid://bkmpd1664i7el" path="res://sprites/2d_lights_and_shadows_neutral_point_light.webp" id="6_e7ved"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jfm4j"]
 texture = ExtResource("1_lc0s4")
@@ -19,10 +20,10 @@ sources/0 = SubResource("TileSetAtlasSource_jfm4j")
 
 [node name="Game" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD6/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAD5/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD3/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAAAAAAAAAD0/wAAAAAAAAAAAADz/wAAAAAAAAAAAADy/wAAAAAAAAAAAADx/wAAAAAAAAAAAADw/wAAAAAAAAAAAADw////AAAAAAAAAADw//7/AAAAAAAAAADw//3/AAAAAAAAAAANAP//AAAAAAAAAAANAP7/AAAAAAAAAAANAP3/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_lkp25")
-format = 2
-layer_0/tile_data = PackedInt32Array(65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 65529, 0, 0, 65528, 0, 0, 65527, 0, 0, 65526, 0, 0, 65525, 0, 0, 65524, 0, 0, 65523, 0, 0, 65522, 0, 0, 65521, 0, 0, 65520, 0, 0, -16, 0, 0, -65552, 0, 0, -131088, 0, 0, -65523, 0, 0, -131059, 0, 0, -196595, 0, 0)
 
 [node name="wolfgirl" parent="." instance=ExtResource("1_e820l")]
 position = Vector2(0, -76)
@@ -46,6 +47,7 @@ grow_vertical = 0
 script = ExtResource("3_gvex4")
 
 [node name="Label" type="RichTextLabel" parent="."]
+visible = false
 offset_left = 41.0
 offset_top = -166.0
 offset_right = 187.0
@@ -56,6 +58,49 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[shake rate=15.0 level=5 connected=1]IT'S COLD[/shake]"
 
-[node name="Guard" parent="." instance=ExtResource("5_rbcxq")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Guard" parent="Enemies" instance=ExtResource("5_rbcxq")]
 position = Vector2(474, -90)
 scale = Vector2(1.2, 1.2)
+
+[node name="Lights" type="Node" parent="."]
+
+[node name="AmbientShadow" type="CanvasModulate" parent="Lights"]
+visible = false
+color = Color(0.150722, 0.133011, 0.218156, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights"]
+visible = false
+position = Vector2(10, -194.778)
+scale = Vector2(2.13021, -2.0408)
+shadow_enabled = true
+texture = ExtResource("6_e7ved")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lights"]
+visible = false
+position = Vector2(523, -194.778)
+scale = Vector2(2.13021, -2.0408)
+shadow_enabled = true
+texture = ExtResource("6_e7ved")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lights"]
+visible = false
+position = Vector2(-515, -194.778)
+scale = Vector2(2.13021, -2.0408)
+shadow_enabled = true
+texture = ExtResource("6_e7ved")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Lights"]
+visible = false
+position = Vector2(-932, -194.778)
+scale = Vector2(2.13021, -2.0408)
+shadow_enabled = true
+texture = ExtResource("6_e7ved")
+
+[node name="PointLight2D5" type="PointLight2D" parent="Lights"]
+visible = false
+position = Vector2(810, -194.778)
+scale = Vector2(2.13021, -2.0408)
+shadow_enabled = true
+texture = ExtResource("6_e7ved")
