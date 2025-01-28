@@ -21,8 +21,6 @@ func _physics_process(delta: float) -> void:
 
 	if field_of_view.is_colliding():
 		velocity = position.direction_to(playerLocation) * SPEED
-		print("Seen!")
-		print(playerLocation)
 	else: 
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 

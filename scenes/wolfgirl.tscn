@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dlgsfalpla7ac"]
+[gd_scene load_steps=25 format=3 uid="uid://dlgsfalpla7ac"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_1p3be"]
 [ext_resource type="Texture2D" uid="uid://bch5h1dhefv6a" path="res://sprites/WolfGirlSpriteSheet.png" id="1_8jupu"]
+[ext_resource type="Script" path="res://scripts/grab_zone.gd" id="3_tf22m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_scolx"]
 atlas = ExtResource("1_8jupu")
@@ -151,6 +152,9 @@ animations = [{
 radius = 9.0
 height = 124.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_levci"]
+radius = 79.0569
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -68)
 collision_layer = 2
@@ -160,8 +164,17 @@ script = ExtResource("1_1p3be")
 sprite_frames = SubResource("SpriteFrames_r86fy")
 animation = &"walk_right"
 autoplay = "idle"
-frame_progress = 0.253148
+frame_progress = 0.451022
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, 5)
 shape = SubResource("CapsuleShape2D_1l1cq")
+
+[node name="GrabZone" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("3_tf22m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabZone"]
+shape = SubResource("CircleShape2D_levci")
+
+[connection signal="body_entered" from="GrabZone" to="GrabZone" method="_on_body_entered"]

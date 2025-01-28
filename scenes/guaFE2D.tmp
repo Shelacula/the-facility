@@ -1,7 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://837myc1f7k6"]
+[gd_scene load_steps=11 format=3 uid="uid://837myc1f7k6"]
 
 [ext_resource type="Texture2D" uid="uid://cpk3eoe5octtb" path="res://sprites/SecurityGuardSpriteSheet.png" id="1_lnggw"]
 [ext_resource type="Script" path="res://scripts/guard.gd" id="1_noq4s"]
+[ext_resource type="Script" path="res://scripts/grab_zone.gd" id="3_ex5dm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dlxhq"]
+radius = 80.0062
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_app7r"]
 atlas = ExtResource("1_lnggw")
@@ -44,8 +48,15 @@ radius = 13.0
 height = 140.0
 
 [node name="Guard" type="CharacterBody2D"]
-collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_noq4s")
+
+[node name="GrabZone" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("3_ex5dm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabZone"]
+shape = SubResource("CircleShape2D_dlxhq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t5rul")
@@ -59,3 +70,5 @@ shape = SubResource("CapsuleShape2D_bpn4v")
 [node name="FieldOfView" type="RayCast2D" parent="."]
 target_position = Vector2(-320, 0)
 collision_mask = 2
+
+[connection signal="body_entered" from="GrabZone" to="GrabZone" method="_on_body_entered"]
