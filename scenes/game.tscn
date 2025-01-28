@@ -64,6 +64,10 @@ text = "[shake rate=15.0 level=5 connected=1]IT'S COLD[/shake]"
 position = Vector2(474, -90)
 scale = Vector2(1.2, 1.2)
 
+[node name="Guard2" parent="Enemies" instance=ExtResource("5_rbcxq")]
+position = Vector2(-717, -92)
+scale = Vector2(-1.2, 1.2)
+
 [node name="Lights" type="Node" parent="."]
 
 [node name="AmbientShadow" type="CanvasModulate" parent="Lights"]
