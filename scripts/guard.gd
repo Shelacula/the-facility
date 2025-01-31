@@ -4,7 +4,6 @@ extends CharacterBody2D
 const SPEED = 150.0
 
 @onready var field_of_view: RayCast2D = $FieldOfView
-
 @onready var wolfgirl: CharacterBody2D = $"../../wolfgirl"
 
 
